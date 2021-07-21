@@ -47,7 +47,6 @@ setCanvasParticle('fixed', 3);
 function convs(num, typeBase) {
     let number;
 
-    console.log(num, typeBase)
     if (num == 0) {
         return 0;
     } else {
@@ -78,4 +77,25 @@ function convertBase64(formID) {
     });
 }
 
+function convertBase(formID) {
+    let form = $(formID);
+    let inputs = [];
+
+    inputs.push(form.find('#decimal')[0]);
+    inputs.push(form.find('#binary')[0]);
+    inputs.push(form.find('#octal')[0]);
+    inputs.push(form.find('#hex')[0]);
+
+    inputs.forEach(function(input, index) {
+        input.oninput = function() {
+            inputs.forEach(function(input2, index2) {
+                if (index2 != index) {
+                    input2.value
+                }
+            })
+        }
+    })
+
+}
+convertBase('#convert_form');
 convertBase64('#convert_base64');
