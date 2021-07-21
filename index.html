@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/medias/favicon-32x32.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./assets/outs/css/animate.css">
+    <link rel="stylesheet" href="./assets/outs/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/outs/js/jquery-3.6.0.js"></script>
+    <script src="./assets/outs/js/bootstrap.js"></script>
+    <script src="./assets/outs/js/base64.js"></script>
+    <title>Đổi các cái loại hệ số</title>
+</head>
+
+<body>
+    <div class="canv">
+        <header>
+            <h1 class="text-center pt-3">
+                Chương trình chuyển đổi các cái loại hệ
+            </h1>
+        </header>
+        <main class="pt-4">
+            <div class="container">
+                <div class="row">
+                    <ul class="nav nav-tabs selection">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#convert_base" type="button">convert_base</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#convert_base64" type="button">convert base64</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#thirtab" type="button">thirtab</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#lasttab" type="button">lasttab</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="convert_base">
+                            <form id="convert_form">
+                                <div class="col-lg-6 col-md-12">
+                                    <input type="text" class="form-control" id="decimal" placeholder="Thâp phân">
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <input type="text" class="form-control" id="binary" placeholder="Nhị phân">
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <input type="text" class="form-control" id="octal" placeholder="Bát phân">
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <input type="text" class="form-control" id="hex" placeholder="Thập lục phân">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="convert_base64">
+                            <div class="col-12">
+                                <textarea type="text" class="form-control" id="base64" placeholder="Tam thập nhị phân"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <textarea type="text" class="form-control" id="nomal_text" placeholder="Ký tự thường"></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="thirtab">qăeqwewqe</div>
+                        <div class="tab-pane" id="lasttab">qăeqweqweqwe</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./assets/js/scripts.js"></script>
+</body>
+
+</html>
