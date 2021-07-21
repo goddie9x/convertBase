@@ -43,26 +43,38 @@
                         <form id="convert_form">
                             <div class="row">
                                 <div class="mb-4 col-lg-6 col-md-12">
-                                    <input type="text" class="form-control" id="decimal" base="10" placeholder="Thâp phân">
+                                    <label for="decimal" class="mb-2">Hệ thâp phân</label>
+                                    <input type="text" class="form-control" id="decimal" base="10" placeholder="Nhập số vào đây">
+                                    <div class="message text-danger"></div>
                                 </div>
                                 <div class="mb-4 col-lg-6 col-md-12">
-                                    <input type="text" class="form-control" id="binary" base="2" placeholder="Nhị phân">
+                                    <label for="binary" class="mb-2">Hệ nhị phân</label>
+                                    <input type="text" class="form-control" id="binary" base="2" placeholder="Nhập số vào đây">
+                                    <div class="message text-danger"></div>
                                 </div>
                                 <div class="mb-4 col-lg-6 col-md-12">
-                                    <input type="text" class="form-control" id="octal" base="8" placeholder="Bát phân">
+                                    <label for="octal" class="mb-2">Hệ bát phân</label>
+                                    <input type="text" class="form-control" id="octal" base="8" placeholder="Nhập số vào đây">
+                                    <div class="message text-danger"></div>
                                 </div>
                                 <div class="mb-4 col-lg-6 col-md-12">
-                                    <input type="text" class="form-control" id="hex" base="16" placeholder="Thập lục phân">
+                                    <label for="hex" class="mb-2">Hệ thập lục phân</label>
+                                    <input type="text" class="form-control" id="hex" base="16" placeholder="Nhập số vào đây">
+                                    <div class="message text-danger"></div>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="tab-pane" id="convert_base64">
-                        <div class="">
-                            <textarea type="text" class="form-control mb-4" id="base64" placeholder="Tam thập nhị phân"></textarea>
-                        </div>
-                        <div class="">
-                            <textarea type="text" class="form-control mb-4" id="nomal_text" placeholder="Ký tự thường"></textarea>
+                        <div class="row">
+                            <div class="">
+                                <label for="base64" class="mb-2">Mã hoá base64</label>
+                                <textarea type="text" class="form-control mb-4" id="base64" placeholder="Lục thập tứ phân"></textarea>
+                            </div>
+                            <div class="">
+                                <label for="nomal_text" class="mb-2">Giải mã base64</label>
+                                <textarea type="text" class="form-control mb-4" id="nomal_text" placeholder="Chữ thường"></textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="thirtab">
@@ -70,6 +82,12 @@
                             Nhập giá trị bạn muốn quy đổi vào các ô tương ứng và...
                         </div>
                         <div class="vl">
+                            .</br>
+                            .</br>
+                            .</br>
+                            .</br>
+                            .</br>
+                            .</br>
                             .</br>
                             .</br>
                             .</br>
