@@ -44,15 +44,47 @@ function setCanvasParticle(position = 'relative', zIndex = 20) {
 
 setCanvasParticle('fixed', 3);
 
-function convs(num, typeBase) {
+function convs(num, typeBase = 2) {
     let number;
-
     if (num == 0) {
         return 0;
     } else {
         number = num % typeBase;
     }
     return convs(Math.floor(num / typeBase), typeBase) * 10 + number;
+}
+
+function myTrimFZero(x) {
+
+    if (typeof(x) == 'string') {
+        return x.replace(/^0+/, '');
+    }
+    if (Array.isArray(x)) {
+        return x.join("").trim().replace(/^0+/, '');
+    }
+}
+
+function reVertToDecimal(num, typeBase = 2) {
+    let rawNum = [...num.toString().trim()];
+    let isNegative = 0;
+
+    if (rawNum[0] == '-') {
+        isNegative = typeBase - 1;
+        rawNum.shift();
+    }
+
+    let textNum = myTrimFZero(rawNum);
+
+    let result = 0;
+    let length = textNum.length;
+
+    for (let i = length - 1; i >= 0; i--) {
+        result += Math.pow(typeBase, i) * textNum[length - 1 - i];
+    }
+    if (isNegative) {
+        result = [isNegative, [...[...result.toString()].reverse()]].join();
+    }
+    return result;
 }
 
 function base64(text, type = 'en') {
@@ -88,14 +120,25 @@ function convertBase(formID) {
 
     inputs.forEach(function(input, index) {
         input.oninput = function() {
-            inputs.forEach(function(input2, index2) {
-                if (index2 != index) {
-                    input2.value
-                }
-            })
+            let currentBase = input.getAttribute('base');
+            let valueInputToDecimal = reVertToDecimal(input.value, currentBase);
+
+            if (Number.isInteger(input.value) && currentBase != 16) {
+                console.error('nhập chữ');
+            } else {
+                inputs.forEach(function(input2, index2) {
+                    if (index2 != index) {
+                        let typeBase = input2.getAttribute('base');
+                        if (typeBase == 16) {
+
+                        } else {
+                            input2.value = convs(valueInputToDecimal, typeBase);
+                        }
+                    }
+                })
+            }
         }
     })
-
 }
 convertBase('#convert_form');
 convertBase64('#convert_base64');
