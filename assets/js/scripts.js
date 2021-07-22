@@ -44,6 +44,27 @@ function setCanvasParticle(position = 'relative', zIndex = 20) {
 
 setCanvasParticle('fixed', 3);
 
+function parseFloat(string, radix) {
+    // Split the string at the decimal point
+    string = string.split(/\./);
+
+    // If there is nothing before the decimal point, make it 0
+    if (string[0] == '') {
+        string[0] = "0";
+    }
+
+    // If there was a decimal point & something after it
+    if (string.length > 1 && string[1] != '') {
+        var fractionLength = string[1].length;
+        string[1] = parseInt(string[1], radix);
+        string[1] *= Math.pow(radix, -fractionLength);
+        return parseInt(string[0], radix) + string[1];
+    }
+
+    // If there wasn't a decimal point or there was but nothing was after it
+    return parseInt(string[0], radix);
+}
+
 function decimalToHexString(number) {
     if (number < 0) {
         number = 0xFFFFFFFF + number + 1;
@@ -88,28 +109,30 @@ function convertBase(formID) {
             inputs.forEach(element => {
                 $(element).next().html('');
             });
+            let inVal = input.value;
             let currentBase = input.getAttribute('base');
-            let valueInputToDecimal = parseFloat(input.value, currentBase);
 
-            if (isNaN(input.value) && currentBase != 16) {
-                $(input).next().html('Vui lòng nhập số dương');
-            } else {
-                inputs.forEach(function(input2, index2) {
-                    if (index2 != index) {
-                        let typeBase = input2.getAttribute('base');
-
-                        if (isNaN(valueInputToDecimal)) {
-                            $(input).next().html('Vui lòng nhập đúng kiểu dữ liệu');
-                        } else {
-
-                            if (typeBase == 16) {
-                                input2.value = decimalToHexString(valueInputToDecimal);
-                            }
-                            input2.value = valueInputToDecimal.toString(typeBase);
-                        }
-                    }
-                })
+            if (currentBase == 16 && /[^0-9A-F]/i.test(inVal)) {
+                $(input).next().html('Vui lòng nhập đúng kiểu thâp lục phân');
             }
+            let valueInputToDecimal = parseFloat(inVal, currentBase);
+
+            if (isNaN(inVal) && currentBase != 16) {
+                $(input).next().html('Vui lòng nhập số');
+            }
+            inputs.forEach(function(input2, index2) {
+                if (index2 != index) {
+                    let typeBase = input2.getAttribute('base');
+
+                    if (isNaN(valueInputToDecimal) && currentBase != 16) {
+                        $(input).next().html('Vui lòng nhập đúng kiểu dữ liệu');
+                    } else {
+
+                        input2.value = valueInputToDecimal.toString(typeBase);
+                    }
+                }
+            })
+
         }
     })
 }
