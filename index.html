@@ -12,7 +12,6 @@
     <script src="./assets/outs/js/jquery-3.6.0.js"></script>
     <script src="./assets/outs/js/bootstrap.js"></script>
     <script src="./assets/outs/js/base64.js"></script>
-    <script src="./assets/outs/js/floatToBinary.js"></script>
     <title>Đổi các cái loại hệ số</title>
 </head>
 
@@ -59,24 +58,36 @@
                     <div class="tab-pane active" id="convert_base">
                         <form id="convert_form">
                             <div class="row">
-                                <div class="mb-4 col-lg-6 col-md-12">
+                                <div class="mb-4 swichable decimal col-lg-6 col-md-12">
                                     <label for="decimal" class="mb-2">Hệ thâp phân</label>
-                                    <input type="text" class="form-control" id="decimal" base="10" placeholder="Nhập số vào đây">
+                                    <div class="input_inside d-flex">
+                                        <input type="text" class="form-control" id="decimal" base="10" placeholder="Nhập số vào đây">
+                                        <div class="btn switch first" title="Chuyển lên đầu"><img src="./assets/medias/swich.svg" alt="chuyển đổi"></div>
+                                    </div>
                                     <div class="message text-danger"></div>
                                 </div>
-                                <div class="mb-4 col-lg-6 col-md-12">
+                                <div class="mb-4 swichable binary col-lg-6 col-md-12">
                                     <label for="binary" class="mb-2">Hệ nhị phân</label>
-                                    <input type="text" class="form-control" id="binary" base="2" placeholder="Nhập số vào đây">
+                                    <div class="input_inside d-flex">
+                                        <input type="text" class="form-control" id="binary" base="2" placeholder="Nhập số vào đây">
+                                        <div class="btn switch" title="Chuyển lên đầu"><img src="./assets/medias/swich.svg" alt="chuyển đổi"></div>
+                                    </div>
                                     <div class="message text-danger"></div>
                                 </div>
-                                <div class="mb-4 col-lg-6 col-md-12">
+                                <div class="mb-4 swichable octal col-lg-6 col-md-12">
                                     <label for="octal" class="mb-2">Hệ bát phân</label>
-                                    <input type="text" class="form-control" id="octal" base="8" placeholder="Nhập số vào đây">
+                                    <div class="input_inside d-flex">
+                                        <input type="text" class="form-control" id="octal" base="8" placeholder="Nhập số vào đây">
+                                        <div class="btn switch" title="Chuyển lên đầu"><img src="./assets/medias/swich.svg" alt="chuyển đổi"></div>
+                                    </div>
                                     <div class="message text-danger"></div>
                                 </div>
-                                <div class="mb-4 col-lg-6 col-md-12">
+                                <div class="mb-4 swichable hex col-lg-6 col-md-12">
                                     <label for="hex" class="mb-2">Hệ thập lục phân</label>
-                                    <input type="text" class="form-control" id="hex" base="16" placeholder="Nhập số vào đây">
+                                    <div class="input_inside d-flex">
+                                        <input type="text" class="form-control" id="hex" base="16" placeholder="Nhập số vào đây">
+                                        <div class="btn switch" title="Chuyển lên đầu"><img src="./assets/medias/swich.svg" alt="chuyển đổi"></div>
+                                    </div>
                                     <div class="message text-danger"></div>
                                 </div>
                             </div>
@@ -84,24 +95,27 @@
                     </div>
                     <div class="tab-pane" id="convert_base64">
                         <div class="row">
-                            <div class="">
+                            <div class=" swichable">
                                 <label for="base64" class="mb-2">Mã hoá base64</label>
-                                <textarea type="text" class="form-control mb-4" id="base64" placeholder="Lục thập tứ phân"></textarea>
+                                <div class="input_inside d-flex">
+                                    <textarea type="text" class="form-control mb-4" id="base64" placeholder="Lục thập tứ phân"></textarea>
+                                    <div class="btn switch first" title="Chuyển lên đầu"><img src="./assets/medias/swich.svg" alt="chuyển đổi"></div>
+                                </div>
                             </div>
-                            <div class="">
+                            <div class=" swichable">
                                 <label for="nomal_text" class="mb-2">Giải mã base64</label>
-                                <textarea type="text" class="form-control mb-4" id="nomal_text" placeholder="Chữ thường"></textarea>
+                                <div class="input_inside d-flex">
+                                    <textarea type="text" class="form-control mb-4" id="nomal_text" placeholder="Chữ thường"></textarea>
+                                    <div class="btn switch" title="Chuyển lên đầu"><img src="./assets/medias/swich.svg" alt="chuyển đổi"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="thirtab">
                         <div class="">
-                            Nhập giá trị bạn muốn quy đổi vào các ô tương ứng và...
+                            Nhập giá trị bạn muốn quy đổi vào các ô tương ứng, hoặc bạn có thể ấn vào nút chuyển đổi để đổi các ô nhập lên vị trí đầu tiên và...
                         </div>
                         <div class="vl">
-                            .</br>
-                            .</br>
-                            .</br>
                             .</br>
                             .</br>
                             .</br>

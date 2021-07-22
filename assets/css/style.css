@@ -12,7 +12,7 @@ main {
     position: relative;
     z-index: 4;
     background-color: transparent;
-    height: 100vh;
+    height: 150vh;
 }
 
 .b_g {
@@ -26,7 +26,7 @@ canvas {
 .canv input,
 .canv textarea {
     color: #9da0a4;
-    line-height: 40px;
+    line-height: 35px;
     background-color: #3a3b3c;
 }
 
@@ -36,10 +36,39 @@ canvas {
     color: #2e89ff;
 }
 
-.selection {}
+.swichable {
+    animation: bounce 1s linear;
+}
+
+.switch.first {
+    display: none;
+}
+
+.switch {
+    background-color: #9da0a4;
+    max-height: 50px;
+}
 
 .tab-content {
     padding: 20px 0;
+}
+
+.switch img {
+    width: 35px;
+}
+
+@media(max-width:1000px) {
+    .canv input,
+    .canv textarea {
+        line-height: 30px;
+    }
+}
+
+@media(max-width:768px) {
+    .canv input,
+    .canv textarea {
+        line-height: 25px;
+    }
 }
 
 @media(max-width:420px) {

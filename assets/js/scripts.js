@@ -65,14 +65,6 @@ function parseFloat(string, radix) {
     return parseInt(string[0], radix);
 }
 
-function decimalToHexString(number) {
-    if (number < 0) {
-        number = 0xFFFFFFFF + number + 1;
-    }
-
-    return number.toString(16).toUpperCase();
-}
-
 function base64(text, type = 'en') {
     if (type == 'en') {
         return Base64.encode(text);
@@ -107,25 +99,25 @@ function convertBase(formID) {
     inputs.forEach(function(input, index) {
         input.oninput = function() {
             inputs.forEach(element => {
-                $(element).next().html('');
+                $(element).parent().next().html('');
             });
             let inVal = input.value;
             let currentBase = input.getAttribute('base');
 
             if (currentBase == 16 && /[^0-9A-F]/i.test(inVal)) {
-                $(input).next().html('Vui lòng nhập đúng kiểu thâp lục phân');
+                $(input).parent().next().html('Vui lòng nhập đúng kiểu thâp lục phân');
             }
             let valueInputToDecimal = parseFloat(inVal, currentBase);
 
             if (isNaN(inVal) && currentBase != 16) {
-                $(input).next().html('Vui lòng nhập số');
+                $(input).parent().next().html('Vui lòng nhập số');
             }
             inputs.forEach(function(input2, index2) {
                 if (index2 != index) {
                     let typeBase = input2.getAttribute('base');
 
                     if (isNaN(valueInputToDecimal) && currentBase != 16) {
-                        $(input).next().html('Vui lòng nhập đúng kiểu dữ liệu');
+                        $(input).parent().next().html('Vui lòng nhập đúng kiểu dữ liệu');
                     } else {
 
                         input2.value = valueInputToDecimal.toString(typeBase);
@@ -136,5 +128,36 @@ function convertBase(formID) {
         }
     })
 }
+
+function switchTop(switchContains) {
+    let type = typeof(switchContains);
+
+    if (type == 'string') {
+
+        let switchBtn = $(`${switchContains} .switch`);
+        let swichableParent = $(`${switchContains} .swichable`).parent();
+
+        switchBtn.on('click', function(e) {
+            switchBtn.removeClass('first');
+
+            $(this).parents('.swichable').prependTo(swichableParent);
+            $(this).addClass('first');
+        });
+    }
+    if (type == 'array' || type == 'object') {
+        switchContains.forEach(switchContain => {
+            let switchBtn = $(`${switchContain} .switch`);
+            let swichableParent = $(`${switchContain} .swichable`).parent();
+
+            switchBtn.on('click', function(e) {
+                switchBtn.removeClass('first');
+
+                $(this).parents('.swichable').prependTo(swichableParent);
+                $(this).addClass('first');
+            });
+        })
+    }
+}
+switchTop(['#convert_form', '#convert_base64']);
 convertBase('#convert_form');
 convertBase64('#convert_base64');
