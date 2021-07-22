@@ -89,7 +89,7 @@ function convertBase(formID) {
                 $(element).next().html('');
             });
             let currentBase = input.getAttribute('base');
-            let valueInputToDecimal = parseInt(input.value, currentBase);
+            let valueInputToDecimal = parseFloat(input.value, currentBase);
 
             if (isNaN(input.value) && currentBase != 16) {
                 $(input).next().html('Vui lòng nhập số dương');
