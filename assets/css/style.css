@@ -23,8 +23,27 @@ canvas {
     top: 0;
 }
 
+.canv input,
+.canv textarea {
+    color: #9da0a4;
+    line-height: 40px;
+    background-color: #3a3b3c;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    background-color: #263951;
+    color: #2e89ff;
+}
+
 .selection {}
 
 .tab-content {
     padding: 20px 0;
+}
+
+@media(max-width:420px) {
+    .selection h2 {
+        font-size: 13px;
+    }
 }
