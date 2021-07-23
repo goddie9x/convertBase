@@ -44,110 +44,100 @@ function setCanvasParticle(position = 'relative', zIndex = 20) {
 
 setCanvasParticle('fixed', 3);
 
-function parseFloat(string, radix) {
-    // Split the string at the decimal point
-    string = string.split(/\./);
+function start() {
 
-    // If there is nothing before the decimal point, make it 0
-    if (string[0] == '') {
-        string[0] = "0";
-    }
+    function parseFloat(string, radix) {
+        // Split the string at the decimal point
+        string = string.split(/\./);
 
-    // If there was a decimal point & something after it
-    if (string.length > 1 && string[1] != '') {
-        var fractionLength = string[1].length;
-        string[1] = parseInt(string[1], radix);
-        string[1] *= Math.pow(radix, -fractionLength);
-        return parseInt(string[0], radix) + string[1];
-    }
-
-    // If there wasn't a decimal point or there was but nothing was after it
-    return parseInt(string[0], radix);
-}
-
-function base64(text, type = 'en') {
-    if (type == 'en') {
-        return Base64.encode(text);
-    }
-    if (type == 'de') {
-        return Base64.decode(text);
-    }
-}
-
-function convertBase64(formID) {
-    let form = $(formID);
-    let inputBase64 = form.find('#base64');
-    let inputText = form.find('#nomal_text');
-
-    inputBase64.unbind().on('input', function(e) {
-        inputText[0].value = base64(this.value);
-    });
-    inputText.unbind().on('input', function(e) {
-        inputBase64[0].value = base64(this.value, 'de');
-    });
-}
-
-function convertBase(formID) {
-    let form = $(formID);
-    let inputs = [];
-
-    inputs.push(form.find('#decimal')[0]);
-    inputs.push(form.find('#binary')[0]);
-    inputs.push(form.find('#octal')[0]);
-    inputs.push(form.find('#hex')[0]);
-
-    inputs.forEach(function(input, index) {
-        input.oninput = function() {
-            inputs.forEach(element => {
-                $(element).parent().next().html('');
-            });
-            let inVal = input.value;
-            let currentBase = input.getAttribute('base');
-
-            if (currentBase == 16 && /[^0-9A-F]/i.test(inVal)) {
-                $(input).parent().next().html('Vui lòng nhập đúng kiểu thâp lục phân');
-            }
-            let valueInputToDecimal = parseFloat(inVal, currentBase);
-
-            if (isNaN(inVal) && currentBase != 16) {
-                $(input).parent().next().html('Vui lòng nhập số');
-            }
-            inputs.forEach(function(input2, index2) {
-                if (index2 != index) {
-                    let typeBase = input2.getAttribute('base');
-
-                    if (isNaN(valueInputToDecimal) && currentBase != 16) {
-                        $(input).parent().next().html('Vui lòng nhập đúng kiểu dữ liệu');
-                    } else {
-
-                        input2.value = valueInputToDecimal.toString(typeBase);
-                    }
-                }
-            })
-
+        // If there is nothing before the decimal point, make it 0
+        if (string[0] == '') {
+            string[0] = "0";
         }
-    })
-}
 
-function switchTop(switchContains) {
-    let type = typeof(switchContains);
+        // If there was a decimal point & something after it
+        if (string.length > 1 && string[1] != '') {
+            var fractionLength = string[1].length;
+            string[1] = parseInt(string[1], radix);
+            string[1] *= Math.pow(radix, -fractionLength);
+            return parseInt(string[0], radix) + string[1];
+        }
 
-    if (type == 'string') {
+        // If there wasn't a decimal point or there was but nothing was after it
+        return parseInt(string[0], radix);
+    }
 
-        let switchBtn = $(`${switchContains} .switch`);
-        let swichableParent = $(`${switchContains} .swichable`).parent();
+    function base64(text, type = 'en') {
+        if (type == 'en') {
+            return Base64.encode(text);
+        }
+        if (type == 'de') {
+            return Base64.decode(text);
+        }
+    }
 
-        switchBtn.on('click', function(e) {
-            switchBtn.removeClass('first');
+    function convertBase64(formID) {
+        let form = $(formID);
+        let inputBase64 = form.find('#base64');
+        let inputText = form.find('#nomal_text');
 
-            $(this).parents('.swichable').prependTo(swichableParent);
-            $(this).addClass('first');
+        inputBase64.unbind().on('input', function(e) {
+            inputText[0].value = base64(this.value);
+        });
+        inputText.unbind().on('input', function(e) {
+            inputBase64[0].value = base64(this.value, 'de');
         });
     }
-    if (type == 'array' || type == 'object') {
-        switchContains.forEach(switchContain => {
-            let switchBtn = $(`${switchContain} .switch`);
-            let swichableParent = $(`${switchContain} .swichable`).parent();
+
+    function convertBase(formID) {
+        let form = $(formID);
+        let inputs = [];
+
+        inputs.push(form.find('#decimal')[0]);
+        inputs.push(form.find('#binary')[0]);
+        inputs.push(form.find('#octal')[0]);
+        inputs.push(form.find('#hex')[0]);
+
+        inputs.forEach(function(input, index) {
+            input.oninput = function() {
+                inputs.forEach(element => {
+                    $(element).parent().next().html('');
+                });
+                let inVal = input.value;
+                let currentBase = input.getAttribute('base');
+
+                if (currentBase == 16 && /[^0-9A-F]/i.test(inVal)) {
+                    $(input).parent().next().html('Vui lòng nhập đúng kiểu thâp lục phân');
+                }
+                let valueInputToDecimal = parseFloat(inVal, currentBase);
+
+                if (isNaN(inVal) && currentBase != 16) {
+                    $(input).parent().next().html('Vui lòng nhập số');
+                }
+                inputs.forEach(function(input2, index2) {
+                    if (index2 != index) {
+                        let typeBase = input2.getAttribute('base');
+
+                        if (isNaN(valueInputToDecimal) && currentBase != 16) {
+                            $(input).parent().next().html('Vui lòng nhập đúng kiểu dữ liệu');
+                        } else {
+
+                            input2.value = valueInputToDecimal.toString(typeBase);
+                        }
+                    }
+                })
+
+            }
+        })
+    }
+
+    function switchTop(switchContains) {
+        let type = typeof(switchContains);
+
+        if (type == 'string') {
+
+            let switchBtn = $(`${switchContains} .switch`);
+            let swichableParent = $(`${switchContains} .swichable`).parent();
 
             switchBtn.on('click', function(e) {
                 switchBtn.removeClass('first');
@@ -155,9 +145,81 @@ function switchTop(switchContains) {
                 $(this).parents('.swichable').prependTo(swichableParent);
                 $(this).addClass('first');
             });
-        })
+        }
+        if (type == 'array' || type == 'object') {
+            switchContains.forEach(switchContain => {
+                let switchBtn = $(`${switchContain} .switch`);
+                let swichableParent = $(`${switchContain} .swichable`).parent();
+
+                switchBtn.on('click', function(e) {
+                    switchBtn.removeClass('first');
+
+                    $(this).parents('.swichable').prependTo(swichableParent);
+                    $(this).addClass('first');
+                });
+            })
+        }
     }
+    switchTop(['#convert_form', '#convert_base64']);
+    convertBase('#convert_form');
+    convertBase64('#convert_base64');
 }
-switchTop(['#convert_form', '#convert_base64']);
-convertBase('#convert_form');
-convertBase64('#convert_base64');
+
+start();
+
+
+function rand(range) {
+    return Math.floor(Math.random() * (range));
+}
+
+function handleMusic(elementContain, volume, arraySrcMusic = ['./assets/medias/Bad_liar.mp3', './assets/medias/Believer.mp3', './assets/medias/Demons.mp3', './assets/medias/It_s_Time.mp3', './assets/medias/Natural.mp3', './assets/medias/Radioactive.mp3']) {
+    let musicSrcs = arraySrcMusic;
+    let secMSrc = [];
+
+    function createMusic(elementContain, arrayMusic, index, volume) {
+        $(elementContain).append(`<audio autoplay="true" loop controls="true" src="${arrayMusic[index]}" class="my-cosmos-music"></audio>`);
+        $('.my-cosmos-music')[0].volume = volume;
+    }
+
+    function renderMusic(elementContain, volume = 0.2) {
+        let length = musicSrcs.length;
+
+        if (length == 0) {
+            musicSrcs = secMSrc;
+            secMSrc = [];
+            length = musicSrcs.length;
+        }
+
+        let index = rand(length);
+
+        createMusic(elementContain, musicSrcs, index, volume);
+        secMSrc.push(musicSrcs.splice(index, 1));
+    }
+    renderMusic(elementContain, volume);
+}
+handleMusic('h1');
+$(document).ready(function() {
+    $('.my-cosmos-music').on('ended', function() {
+        handleMusic('h1');
+    });
+    new Splide('.splide', {
+        type: 'loop',
+        perPage: 3,
+        rewind: true,
+        rewindSpeed: 500,
+        perMove: 1,
+        clone: 0,
+        gap: 20,
+        lazyLoad: 'nearby',
+        autoplay: true,
+        interval: 3000,
+        breakpoints: {
+            992: {
+                perPage: 2,
+            },
+            767: {
+                perPage: 1,
+            }
+        }
+    }).mount();
+});
