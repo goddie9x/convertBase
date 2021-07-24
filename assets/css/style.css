@@ -61,6 +61,10 @@ canvas {
     background-color: transparent;
 }
 
+.card .card-img-top {
+    max-height: 240px;
+}
+
 .my-cosmos-music {
     display: none;
 }
