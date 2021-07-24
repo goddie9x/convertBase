@@ -203,14 +203,15 @@ $(document).ready(function() {
     });
     new Splide('.splide', {
         type: 'loop',
-        perPage: 3,
         rewind: true,
         rewindSpeed: 500,
         perMove: 1,
         clone: 0,
         gap: 20,
-        lazyLoad: 'nearby',
+        lazyLoad: 'sequential',
+        focus: true,
         autoplay: true,
+        perPage: 3,
         interval: 3000,
         breakpoints: {
             992: {

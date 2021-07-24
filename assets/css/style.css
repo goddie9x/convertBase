@@ -59,14 +59,24 @@ canvas {
 
 .card {
     background-color: transparent;
+    text-align: center;
+    height: 400px;
 }
 
 .card .card-img-top {
-    max-height: 240px;
+    height: 300px;
+}
+
+.splide__pagination {
+    bottom: 0;
 }
 
 .my-cosmos-music {
     display: none;
+}
+
+#lasttab {
+    animation: flash 1s linear;
 }
 
 @media(max-width:1000px) {
