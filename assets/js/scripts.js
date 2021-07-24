@@ -201,25 +201,26 @@ $(document).ready(function() {
     $('.my-cosmos-music').on('ended', function() {
         handleMusic('h1');
     });
-    new Splide('.splide', {
-        type: 'loop',
-        rewind: true,
-        rewindSpeed: 500,
-        perMove: 1,
-        clone: 0,
-        gap: 20,
-        lazyLoad: 'sequential',
-        focus: true,
-        autoplay: true,
-        perPage: 3,
-        interval: 3000,
-        breakpoints: {
-            992: {
-                perPage: 2,
+    $('.members').owlCarousel({
+        items: 3,
+        responsive: {
+            1200: {
+                items: 3,
             },
-            767: {
-                perPage: 1,
+            992: {
+                items: 2,
+            },
+            600: {
+                items: 1,
+            },
+            2: {
+                items: 1,
             }
-        }
-    }).mount();
+        },
+        nav: true,
+        rewind: true,
+        loop: true,
+        margin: 20,
+        autoplay: true,
+    });
 });

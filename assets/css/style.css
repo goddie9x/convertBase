@@ -60,15 +60,29 @@ canvas {
 .card {
     background-color: transparent;
     text-align: center;
-    height: 400px;
 }
 
 .card .card-img-top {
     height: 300px;
 }
 
-.splide__pagination {
-    bottom: 0;
+.owl-carousel .owl-dots {
+    bottom: -20px;
+}
+
+.owl-carousel .owl-nav [class*='owl-'] {
+    background-color: #000;
+    width: 40px;
+    height: 50px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 50px;
+}
+
+.owl-carousel .owl-nav span {
+    position: absolute;
+    top: -22px;
+    left: 35%;
 }
 
 .my-cosmos-music {
