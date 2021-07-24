@@ -34,7 +34,6 @@ function setCanvasParticle(position = 'relative', zIndex = 20) {
     var canvasDiv = document.querySelector('.canv');
     var options = {
         particleColor: '#888',
-        background: '../assets/medias/bg.jpg',
         interactive: true,
         speed: 'medium',
         density: 'high'
