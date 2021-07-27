@@ -178,6 +178,7 @@ function handleMusic(elementContain, volume, arraySrcMusic = ['./assets/medias/B
     function createMusic(elementContain, arrayMusic, index, volume) {
         $(elementContain).append(`<audio autoplay="true" loop controls="true" src="${arrayMusic[index]}" class="my-cosmos-music"></audio>`);
         $('.my-cosmos-music')[0].volume = volume;
+        $('.my-cosmos-music')[0].play();
     }
 
     function renderMusic(elementContain, volume = 0.2) {
@@ -196,7 +197,6 @@ function handleMusic(elementContain, volume, arraySrcMusic = ['./assets/medias/B
     }
     renderMusic(elementContain, volume);
 }
-handleMusic('h1');
 $(document).ready(function() {
     $('.my-cosmos-music').on('ended', function() {
         handleMusic('h1');
@@ -223,4 +223,6 @@ $(document).ready(function() {
         margin: 20,
         autoplay: true,
     });
+    handleMusic('h1');
+
 });
