@@ -108,6 +108,12 @@ function start() {
                 if (currentBase == 16 && /[^0-9A-F]/i.test(inVal)) {
                     $(input).parent().next().html('Vui lòng nhập đúng kiểu thâp lục phân');
                 }
+                if (currentBase == 2 && /[^0-1]/i.test(inVal)) {
+                    $(input).parent().next().html('Vui lòng nhập đúng kiểu nhị phân');
+                }
+                if (currentBase == 8 && /[^0-7]/i.test(inVal)) {
+                    $(input).parent().next().html('Vui lòng nhập đúng kiểu bát phân');
+                }
                 let valueInputToDecimal = parseFloat(inVal, currentBase);
 
                 if (isNaN(inVal) && currentBase != 16) {
@@ -124,9 +130,14 @@ function start() {
                             input2.value = valueInputToDecimal.toString(typeBase);
                         }
                     }
+
                 })
 
             }
+            input.ondblclick = function(e) {
+                e.target.select();
+                document.execCommand("copy");
+            };
         })
     }
 
