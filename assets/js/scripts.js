@@ -175,43 +175,10 @@ function start() {
     convertBase64('#convert_base64');
 }
 
-start();
-
-
-function rand(range) {
-    return Math.floor(Math.random() * (range));
-}
-
-function handleMusic(elementContain, volume, arraySrcMusic = ['./assets/medias/Bad_liar.mp3', './assets/medias/Believer.mp3', './assets/medias/Demons.mp3', './assets/medias/It_s_Time.mp3', './assets/medias/Natural.mp3', './assets/medias/Radioactive.mp3']) {
-    let musicSrcs = arraySrcMusic;
-    let secMSrc = [];
-
-    function createMusic(elementContain, arrayMusic, index, volume) {
-        $(elementContain).append(`<audio autoplay="true" loop controls="true" src="${arrayMusic[index]}" class="my-cosmos-music"></audio>`);
-        $('.my-cosmos-music')[0].volume = volume;
-        $('.my-cosmos-music')[0].play();
-    }
-
-    function renderMusic(elementContain, volume = 0.2) {
-        let length = musicSrcs.length;
-
-        if (length == 0) {
-            musicSrcs = secMSrc;
-            secMSrc = [];
-            length = musicSrcs.length;
-        }
-
-        let index = rand(length);
-
-        createMusic(elementContain, musicSrcs, index, volume);
-        secMSrc.push(musicSrcs.splice(index, 1));
-    }
-    renderMusic(elementContain, volume);
-}
 $(document).ready(function() {
-    $('.my-cosmos-music').on('ended', function() {
-        handleMusic('h1');
-    });
+
+    start();
+
     $('.members').owlCarousel({
         items: 3,
         responsive: {
@@ -234,6 +201,4 @@ $(document).ready(function() {
         margin: 20,
         autoplay: true,
     });
-    handleMusic('h1');
-
 });
